@@ -1,8 +1,17 @@
 import React, { Component } from "react";
-import styled from "styled-components";
+import styled, { injectGlobal } from "styled-components";
 
-const URL =
-  "https://api.github.com/search/repositories?q=more+react+facebook+vue";
+const VUE =
+  "https://api.github.com/repos/vuejs/vue";
+const REACT = "https://api.github.com/repos/facebook/react";
+
+injectGlobal`
+  body {	
+    margin: 0;	
+    padding: 0;	
+    font-family: sans-serif;	
+  }
+`;
 
 const Button = styled.button`
   font-family: inherit;
@@ -10,7 +19,7 @@ const Button = styled.button`
   padding: 8px;
   margin: 0;
   color: white;
-  background-color: white-blue;
+  background-color: black;
   border: 0;
   border-radius: 4px;
   appearance: none;
@@ -21,21 +30,33 @@ const Button = styled.button`
 
 class App extends Component {
   state = {
-    react: 0,
-    vue: 0
+    reactStargazersCount: 0,
+    vueStargazersCount: 0
   };
 
   getGithubStars = async () => {
-    const response = await fetch(URL);
-    const result = await response.json();
+    // Vue
+    const responseVue = await fetch(VUE);
+    const resultVue = await responseVue.json();
 
-    console.log(result);
+    // React
+    const responseReact = await fetch(REACT);
+    const resultReact = await responseReact.json();
+
+    this.setState({
+      reactStargazersCount: resultReact.stargazers_count,
+      vueStargazersCount: resultVue.stargazers_count
+    }) 
   };
 
   render() {
+    const {reactStargazersCount, vueStargazersCount} = this.state;
+
     return (
       <div>
-        <Button onClick={this.getGithubStars} />
+        <p>REACT: {reactStargazersCount}</p>
+        <p>VUE: {vueStargazersCount}</p>
+        <Button onClick={this.getGithubStars}>CLICK HERE!</Button>
       </div>
     );
   }
