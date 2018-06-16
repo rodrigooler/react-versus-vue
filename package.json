@@ -7,6 +7,7 @@
     "url": "https://github.com/rodrigooler/react-versus-all/issues"
   },
   "dependencies": {
+    "date-fns": "^1.29.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-scripts": "1.1.4",

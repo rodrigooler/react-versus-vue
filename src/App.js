@@ -1,17 +1,10 @@
 import React, { Component } from "react";
-import styled, { injectGlobal } from "styled-components";
+import styled from "styled-components";
+import {format} from 'date-fns';
 
 const VUE =
   "https://api.github.com/repos/vuejs/vue";
 const REACT = "https://api.github.com/repos/facebook/react";
-
-injectGlobal`
-  body {	
-    margin: 0;	
-    padding: 0;	
-    font-family: sans-serif;	
-  }
-`;
 
 const Button = styled.button`
   font-family: inherit;
@@ -64,7 +57,7 @@ class App extends Component {
       <div>
         <p>REACT: {reactStargazersCount}</p>
         <p>VUE: {vueStargazersCount}</p>
-        <p>{updatedDate.toString()}</p>
+        <p>{format(updatedDate, "YYYY-MM-DD hh:mm:ss"}</p>
       </div>
     );
   }
