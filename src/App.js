@@ -1,25 +1,32 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import {format} from 'date-fns';
+import { format } from "date-fns";
 
-const VUE =
-  "https://api.github.com/repos/vuejs/vue";
-const REACT = "https://api.github.com/repos/facebook/react";
+import Card from "./components/Card";
 
-const Button = styled.button`
-  font-family: inherit;
-  font-size: inherit;
-  padding: 8px;
-  margin: 0;
-  color: white;
-  background-color: black;
-  border: 0;
-  border-radius: 4px;
-  appearance: none;
-  &:hover {
-    background-color: black;
-  }
+const Row = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: space-around;
+`; 
+
+const Column = styled.div`
+  flex-direction: column;
 `;
+
+const Title = styled.h1`
+  color: #ffffff;
+`;
+
+const Wrapper = styled.div`
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const VUE = "https://api.github.com/repos/vuejs/vue";
+const REACT = "https://api.github.com/repos/facebook/react";
 
 class App extends Component {
   state = {
@@ -46,19 +53,33 @@ class App extends Component {
     this.setState({
       reactStargazersCount: resultReact.stargazers_count,
       vueStargazersCount: resultVue.stargazers_count,
-      updatedDate: new Date(),
-    })
-  } 
+      updatedDate: new Date()
+    });
+  };
 
   render() {
-    const {reactStargazersCount, vueStargazersCount, updatedDate} = this.state;
+    const {
+      reactStargazersCount,
+      vueStargazersCount,
+      updatedDate
+    } = this.state;
 
     return (
-      <div>
-        <p>REACT: {reactStargazersCount}</p>
-        <p>VUE: {vueStargazersCount}</p>
-        <p>{format(updatedDate, "YYYY-MM-DD hh:mm:ss"}</p>
-      </div>
+      <Wrapper>
+        <Column>
+        <Row>
+        <Title>React vs Vue 2018</Title>
+        </Row>
+          <Row>
+            <Card>
+              <p>REACT: {reactStargazersCount}</p>
+            </Card>
+            <Card>
+              <p>VUE: {vueStargazersCount}</p>
+            </Card>
+          </Row>
+        </Column>
+      </Wrapper>
     );
   }
 }
