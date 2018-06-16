@@ -31,7 +31,8 @@ const Button = styled.button`
 class App extends Component {
   state = {
     reactStargazersCount: 0,
-    vueStargazersCount: 0
+    vueStargazersCount: 0,
+    updatedDate: new Date()
   };
 
   componentDidMount() {
@@ -51,17 +52,19 @@ class App extends Component {
 
     this.setState({
       reactStargazersCount: resultReact.stargazers_count,
-      vueStargazersCount: resultVue.stargazers_count
+      vueStargazersCount: resultVue.stargazers_count,
+      updatedDate: new Date(),
     })
   } 
 
   render() {
-    const {reactStargazersCount, vueStargazersCount} = this.state;
+    const {reactStargazersCount, vueStargazersCount, updatedDate} = this.state;
 
     return (
       <div>
         <p>REACT: {reactStargazersCount}</p>
         <p>VUE: {vueStargazersCount}</p>
+        <p>{updatedDate.toString()}</p>
       </div>
     );
   }
