@@ -16,6 +16,7 @@ function Card({ title, data }) {
 
   return (
     <Wrapper>
+      <p>{title}</p>
       <p>Stars: {stars}</p>
       <p>Forks: {forks}</p>
       <p>Watchers: {watchers}</p>
