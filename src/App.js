@@ -8,10 +8,11 @@ const Row = styled.div`
   display: flex;
   justify-content: center;
   align-items: space-around;
-`; 
+`;
 
 const Column = styled.div`
   flex-direction: column;
+  justify-content: space-around;
 `;
 
 const Title = styled.h1`
@@ -67,10 +68,13 @@ class App extends Component {
     return (
       <Wrapper>
         <Column>
-        <Row>
-        <Title>React vs Vue 2018</Title>
-        </Row>
           <Row>
+            <Column>
+              <Title>React vs Vue 2018</Title>
+              <Title>Update: {format(updatedDate, "YYYY-MM-DD hh:mm:ss")}</Title>
+            </Column>
+          </Row>
+          <Row> 
             <Card>
               <p>REACT: {reactStargazersCount}</p>
             </Card>
