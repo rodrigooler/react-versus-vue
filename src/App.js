@@ -8,13 +8,21 @@ import Row from "./components/Row";
 import Title from "./components/Title";
 import Column from "./components/Column";
 
-const VUE = "https://api.github.com/repos/vuejs/vue";
-const REACT = "https://api.github.com/repos/facebook/react";
+import {getRepositoryData} from './utils';
+
+const VUE = "vuejs/vue";
+const REACT = "facebook/react";
+
+const initialState = {
+  stars: 0,
+  forks: 0,
+  watchers: 0, 
+}
 
 class App extends Component {
   state = {
-    reactStargazersCount: 0,
-    vueStargazersCount: 0,
+    react: initialState,
+    vue: initialState,
     updatedDate: new Date()
   };
 
@@ -25,25 +33,20 @@ class App extends Component {
   }
 
   getStars = async () => {
-    // Vue
-    const responseVue = await fetch(VUE);
-    const resultVue = await responseVue.json();
-
-    // React
-    const responseReact = await fetch(REACT);
-    const resultReact = await responseReact.json();
+    const react = await getRepositoryData(REACT);
+    const vue = await getRepositoryData(VUE);
 
     this.setState({
-      reactStargazersCount: resultReact.stargazers_count,
-      vueStargazersCount: resultVue.stargazers_count,
+      react,
+      vue,
       updatedDate: new Date()
     });
   };
 
   render() {
     const {
-      reactStargazersCount,
-      vueStargazersCount,
+      react,
+      vue,
       updatedDate
     } = this.state;
 
@@ -57,12 +60,8 @@ class App extends Component {
             </Column>
           </Row>
           <Row> 
-            <Card>
-              <p>REACT: {reactStargazersCount}</p>
-            </Card>
-            <Card>
-              <p>VUE: {vueStargazersCount}</p>
-            </Card>
+            <Card title={REACT} data={react} />
+            <Card title={VUE} data={vue} />
           </Row>
         </Column>
       </Wrapper>

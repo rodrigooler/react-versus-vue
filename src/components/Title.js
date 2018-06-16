@@ -4,4 +4,4 @@ const Title = styled.h1`
   color: #ffffff;
 `;
 
-export default Row;
+export default Title;
