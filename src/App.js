@@ -35,10 +35,12 @@ class App extends Component {
   };
 
   componentDidMount() {
-    this.getGithubStars();
+    this.getStars();
+
+    setInterval(() => this.getStars(), 3000);
   }
 
-  getGithubStars = async () => {
+  getStars = async () => {
     // Vue
     const responseVue = await fetch(VUE);
     const resultVue = await responseVue.json();
@@ -51,9 +53,7 @@ class App extends Component {
       reactStargazersCount: resultReact.stargazers_count,
       vueStargazersCount: resultVue.stargazers_count
     })
-
-    getGithubStars();
-  };
+  } 
 
   render() {
     const {reactStargazersCount, vueStargazersCount} = this.state;
