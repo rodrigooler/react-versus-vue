@@ -1,21 +1,42 @@
 {
   "name": "react-versus-all",
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
   "version": "0.1.0",
-  "private": true,
+  "author": "Rodrigo Oler <roodrigoprogrammer@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/rodrigooler/react-versus-all/issues"
+  },
   "dependencies": {
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-scripts": "1.1.4",
     "styled-components": "^3.3.2"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "deploy": "npm run build && gh-pages -d build"
-  },
   "devDependencies": {
     "gh-pages": "^1.2.0"
+  },
+  "homepage": "https://github.com/rodrigooler/react-versus-all#readme",
+  "keywords": [
+    "fetch",
+    "github",
+    "react",
+    "stars",
+    "time",
+    "versus",
+    "vue"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rodrigooler/react-versus-all.git"
+  },
+  "scripts": {
+    "build": "react-scripts build",
+    "deploy": "npm run build && gh-pages -d build",
+    "eject": "react-scripts eject",
+    "start": "react-scripts start",
+    "test": "react-scripts test --env=jsdom"
   }
 }
