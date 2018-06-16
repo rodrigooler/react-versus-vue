@@ -3,28 +3,10 @@ import styled from "styled-components";
 import { format } from "date-fns";
 
 import Card from "./components/Card";
-
-const Row = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: space-around;
-`;
-
-const Column = styled.div`
-  flex-direction: column;
-  justify-content: space-around;
-`;
-
-const Title = styled.h1`
-  color: #ffffff;
-`;
-
-const Wrapper = styled.div`
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
+import Wrapper from "./components/Wrapper";
+import Row from "./components/Row";
+import Title from "./components/Title";
+import Column from "./components/Column";
 
 const VUE = "https://api.github.com/repos/vuejs/vue";
 const REACT = "https://api.github.com/repos/facebook/react";
