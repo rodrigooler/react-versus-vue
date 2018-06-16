@@ -34,6 +34,10 @@ class App extends Component {
     vueStargazersCount: 0
   };
 
+  componentDidMount() {
+    this.getGithubStars();
+  }
+
   getGithubStars = async () => {
     // Vue
     const responseVue = await fetch(VUE);
@@ -46,7 +50,9 @@ class App extends Component {
     this.setState({
       reactStargazersCount: resultReact.stargazers_count,
       vueStargazersCount: resultVue.stargazers_count
-    }) 
+    })
+
+    getGithubStars();
   };
 
   render() {
@@ -56,7 +62,6 @@ class App extends Component {
       <div>
         <p>REACT: {reactStargazersCount}</p>
         <p>VUE: {vueStargazersCount}</p>
-        <Button onClick={this.getGithubStars}>CLICK HERE!</Button>
       </div>
     );
   }
