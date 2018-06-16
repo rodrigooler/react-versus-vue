@@ -16,7 +16,7 @@
   "devDependencies": {
     "gh-pages": "^1.2.0"
   },
-  "homepage": "https://rodrigooler.github.io/react-versus-all",
+  "homepage": "https://rodrigooler.github.io",
   "keywords": [
     "fetch",
     "github",
@@ -35,8 +35,9 @@
   },
   "scripts": {
     "build": "react-scripts build",
-    "deploy": "npm run build && gh-pages -d build",
+    "deploy": "gh-pages -b master -d build",
     "eject": "react-scripts eject",
+    "predeploy": "npm run build",
     "start": "react-scripts start",
     "test": "react-scripts test --env=jsdom"
   }
